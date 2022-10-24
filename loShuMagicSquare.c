@@ -28,28 +28,37 @@ int main(int argc, char const *argv[]) {
 
     // Check argument count (should be equal to 10)
     if (argc > 1) {
-        if (argc > 9) {
-            for (int i = 1; i < 10; i++) {
-                // Parse values into square
-                int idx = i - 1;
-                int value = atoi(argv[i]);
-                if (value < 1 || value > 9) {
-                    // User provided a value out of range or was not an integer
-                    printf("Invalid value: %s (not a value between 1 and 9); exiting...\n", argv[i]);
-                    return EXIT_FAILURE;
-                }
-                square[idx / 3][idx % 3] = value;
-            }
-            printf("Square:\n");
-            printSquare(square);
-            if (!isUniqueSquare(square)) {
-                printf("Square is not unique; exiting...\n");
-                return EXIT_FAILURE;
-            }
-        } else {
+        if (argc < 10) {
             // User provided arguments, but did not provide the amount of values required
             printf("Not enough arguments provided (need 9 values; got %d).\n", argc - 1);
             return EXIT_FAILURE;
+        }
+
+        for (int i = 1; i < 10; i++) {
+            // Parse values into square
+            int idx = i - 1;
+            int value = atoi(argv[i]);
+            if (value < 1 || value > 9) {
+                // User provided a value out of range or was not an integer
+                printf("Invalid value: %s (not a value between 1 and 9); exiting...\n", argv[i]);
+                return EXIT_FAILURE;
+            }
+            square[idx / 3][idx % 3] = value;
+        }
+        printf("Square:\n");
+        printSquare(square);
+
+        // Check that square is unique
+        if (!isUniqueSquare(square)) {
+            printf("Square is not unique; exiting...\n");
+            return EXIT_FAILURE;
+        }
+        
+        // Check that square is a magic square
+        if (isMagicSquare(square)) {
+            printf("Square is a magic square!\n");
+        } else {
+            printf("Square is not a magic square.\n");
         }
     } else {
         // If user does not provide any arguments:
