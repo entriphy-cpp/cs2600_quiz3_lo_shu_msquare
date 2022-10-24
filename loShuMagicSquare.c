@@ -23,7 +23,7 @@ int main(int argc, char const *argv[]) {
                 int value = atoi(argv[i]);
                 if (value < 1 || value > 9) {
                     // User provided a value out of range or was not an integer
-                    printf("Invalid value: %s; exiting...\n", argv[i]);
+                    printf("Invalid value: %s (not a value between 1 and 9); exiting...\n", argv[i]);
                     return EXIT_FAILURE;
                 }
                 square[idx / 3][idx % 3] = value;
