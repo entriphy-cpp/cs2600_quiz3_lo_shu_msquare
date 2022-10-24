@@ -110,6 +110,18 @@ int diagonalSum(int square[3][3], int diagonal) {
     return diagonal == 0 ? square[0][0] + square[1][1] + square[2][2] : square[2][0] + square[1][1] + square[0][2];
 }
 
+int isUniqueSquare(int square[3][3]) {
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            if (i == j)
+                continue; // Do not compare to self
+            if (square[i / 3][i % 3] == square[j / 3][j % 3]) // Compare to other value in square
+                return 0; // Square is not unique
+        }
+    }
+    return 1; // Square is unique
+}
+
 int isMagicSquare(int square[3][3]) {
     // Get initial sum to check for
     int sum = rowSum(square, 0);
