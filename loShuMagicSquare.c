@@ -6,6 +6,7 @@
 int rowSum(int square[3][3], int row); // Gets the sum of the specified row
 int columnSum(int square[3][3], int column); // Gets the sum of the specified column
 int diagonalSum(int square[3][3], int diagonal); // Gets the sum of the specified column
+int isUniqueSquare(int square[3][3]); // Checks if all values in the square are unique
 int isMagicSquare(int square[3][3]); // Checks if the square is a magic square
 void printSquare(int square[3][3]); // Formats and prints the square
 
@@ -78,8 +79,19 @@ int main(int argc, char const *argv[]) {
         }
 
         // Create a randomized square until is a magic square is found
-        printf("Generating random sqaures...");
+        printf("Generating random sqaures...\n");
         srand(time(NULL));
+        int tries = 0; // Number of tries to find a random magic square
+        while (!isMagicSquare(square)) {
+            tries++;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    square[i][j] = (rand() % 9) + 1; // Generate a number between 1 and 9
+                }
+            }
+        }
+        printf("Found magic square after %d tries:\n", tries);
+        printSquare(square);
     }
 
     return EXIT_SUCCESS;
