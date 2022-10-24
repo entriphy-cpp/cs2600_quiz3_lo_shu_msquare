@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 int rowSum(int square[3][3], int row); // Gets the sum of the specified row
 int columnSum(int square[3][3], int column); // Gets the sum of the specified column
@@ -21,6 +22,7 @@ const int NOT_MAGIC_SQUARE[3][3] = {
 };
 
 int main(int argc, char const *argv[]) {
+    // Stores the square in a 2D array
     int square[3][3];
 
     // Check argument count (should be equal to 10)
@@ -76,6 +78,8 @@ int main(int argc, char const *argv[]) {
         }
 
         // Create a randomized square until is a magic square is found
+        printf("Generating random sqaures...");
+        srand(time(NULL));
     }
 
     return EXIT_SUCCESS;
