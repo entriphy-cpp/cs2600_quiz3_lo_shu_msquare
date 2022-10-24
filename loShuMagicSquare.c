@@ -5,6 +5,11 @@ int rowSum(int square[3][3], int row); // Gets the sum of the specified row
 int columnSum(int square[3][3], int column); // Gets the sum of the specified column
 int isMagicSquare(int square[3][3]); // Checks if the square is a magic square
 void printSquare(int square[3][3]); // Formats and prints the square
+const int MAGIC_SQUARE[3][3] = {
+    {},
+    {},
+    {}
+};
 
 int main(int argc, char const *argv[]) {
     int square[3][3];
@@ -32,9 +37,13 @@ int main(int argc, char const *argv[]) {
         }
     } else {
         // If user does not provide any arguments:
-        // - Create square that is a magic square
-        // - Create square that is not a magic square
-        // - Create a randomized square until is a magic square is found
+        printf("Usage: loShuMagicSquare [square]\n");
+        printf("\tProvide 9 square values to test if the square is a Lo Shu Magic Square (all rows, columns, and diagonals add up to the same number).\n");
+        printf("Running tests...\n");
+
+        // Create square that is a magic square
+        // Create square that is not a magic square
+        // Create a randomized square until is a magic square is found
     }
 
     return EXIT_SUCCESS;
