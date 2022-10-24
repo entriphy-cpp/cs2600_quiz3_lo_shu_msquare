@@ -48,17 +48,32 @@ int main(int argc, char const *argv[]) {
         // If user does not provide any arguments:
         printf("Usage: loShuMagicSquare [square]\n");
         printf("\tProvide 9 square values to test if the square is a Lo Shu Magic Square (all rows, columns, and diagonals add up to the same number).\n");
-        printf("Running tests...\n");
+        printf("Running tests...\n\n");
+        int magicSquare;
 
         // Create square that is a magic square
         memcpy(square, MAGIC_SQUARE, sizeof(square));
         printf("Valid magic square:\n");
         printSquare(square);
+        magicSquare = isMagicSquare(square);
+        if (magicSquare) {
+            printf("Square is a magic square!\n\n");
+        } else {
+            printf("Square is not a magic square; exiting...\n");
+            return EXIT_FAILURE;
+        }
 
         // Create square that is not a magic square
         memcpy(square, NOT_MAGIC_SQUARE, sizeof(square));
         printf("Invalid magic square:\n");
         printSquare(square);
+        magicSquare = isMagicSquare(square);
+        if (magicSquare) {
+            printf("Square is a magic square; exiting...\n");
+            return EXIT_FAILURE;
+        } else {
+            printf("Square is not a magic square.\n\n");
+        }
 
         // Create a randomized square until is a magic square is found
     }
