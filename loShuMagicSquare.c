@@ -5,10 +5,17 @@ int rowSum(int square[3][3], int row); // Gets the sum of the specified row
 int columnSum(int square[3][3], int column); // Gets the sum of the specified column
 int isMagicSquare(int square[3][3]); // Checks if the square is a magic square
 void printSquare(int square[3][3]); // Formats and prints the square
+
+// Test squares
 const int MAGIC_SQUARE[3][3] = {
-    {},
-    {},
-    {}
+    {4, 9, 2},
+    {3, 5, 7},
+    {8, 1, 6}
+};
+const int NOT_MAGIC_SQUARE[3][3] = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
 };
 
 int main(int argc, char const *argv[]) {
