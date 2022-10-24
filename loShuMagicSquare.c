@@ -34,8 +34,8 @@ int main(int argc, char const *argv[]) {
             return EXIT_FAILURE;
         }
 
+        // Parse values into square
         for (int i = 1; i < 10; i++) {
-            // Parse values into square
             int idx = i - 1;
             int value = atoi(argv[i]);
             if (value < 1 || value > 9) {
@@ -45,6 +45,8 @@ int main(int argc, char const *argv[]) {
             }
             square[idx / 3][idx % 3] = value;
         }
+
+        // Print out square
         printf("Square:\n");
         printSquare(square);
 
@@ -61,18 +63,16 @@ int main(int argc, char const *argv[]) {
             printf("Square is not a magic square.\n");
         }
     } else {
-        // If user does not provide any arguments:
+        // Print program usage if user does not specify any arguments
         printf("Provide 9 square values to test if the square is a Lo Shu Magic Square (all rows, columns, and diagonals add up to the same number).\n");
         printf("Usage: loShuMagicSquare [square]\n");
         printf("Running tests...\n\n");
-        int magicSquare;
 
         // Create square that is a magic square
         memcpy(square, MAGIC_SQUARE, sizeof(square));
         printf("Valid magic square:\n");
         printSquare(square);
-        magicSquare = isMagicSquare(square);
-        if (magicSquare) {
+        if (isMagicSquare(square)) {
             printf("Square is a magic square!\n\n");
         } else {
             printf("Square is not a magic square; exiting...\n");
@@ -83,8 +83,7 @@ int main(int argc, char const *argv[]) {
         memcpy(square, NOT_MAGIC_SQUARE, sizeof(square));
         printf("Invalid magic square:\n");
         printSquare(square);
-        magicSquare = isMagicSquare(square);
-        if (magicSquare) {
+        if (isMagicSquare(square)) {
             printf("Square is a magic square; exiting...\n");
             return EXIT_FAILURE;
         } else {
@@ -92,12 +91,13 @@ int main(int argc, char const *argv[]) {
         }
 
         // Create a randomized square until is a magic square is found
-        printf("Generating random sqaures...\n");
+        printf("Generating random squares...\n");
         srand(time(NULL)); // Set random number generator seed
         int tries = 0; // Number of tries to find a random magic square
-        while (!isMagicSquare(square)) {
+        while (!isMagicSquare(square)) { // Loop until a magic square is found
             tries++; // Only count tries when a unique square is generated
-            do {
+            do { 
+                // Loop until a unique square is found
                 for (int i = 0; i < 3; i++) {
                     for (int j = 0; j < 3; j++) {
                         square[i][j] = (rand() % 9) + 1; // Generate a number between 1 and 9
@@ -105,6 +105,8 @@ int main(int argc, char const *argv[]) {
                 }
             } while (!isUniqueSquare(square));
         }
+
+        // Print out random magic square
         printf("Found magic square after %d tries:\n", tries);
         printSquare(square);
     }
