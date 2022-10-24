@@ -1,10 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int rowSum(int *square, int row); // Gets the sum of the specified row
-int columnSum(int *square, int column); // Gets the sum of the specified column
-int isMagicSquare(int *square); // Checks if the square is a magic square
-void printSquare(int *square); // Formats and prints the square
+int rowSum(int square[3][3], int row); // Gets the sum of the specified row
+int columnSum(int square[3][3], int column); // Gets the sum of the specified column
+int isMagicSquare(int square[3][3]); // Checks if the square is a magic square
+void printSquare(int square[3][3]); // Formats and prints the square
 
 int main(int argc, char const *argv[]) {
     int square[3][3];
@@ -34,19 +34,19 @@ int main(int argc, char const *argv[]) {
         // - Create matrix that is not a magic square
         // - Create a randomized matrix until is a magic square is found
     }
-    
+
     return EXIT_SUCCESS;
 }
 
-int rowSum(int *square, int row) {
+int rowSum(int square[3][3], int row) {
     return 0; // Placeholder return
 }
 
-int columnSum(int *square, int column) {
+int columnSum(int square[3][3], int column) {
     return 0; // Placeholder return
 }
 
-int isMagicSquare(int *square) {
+int isMagicSquare(int square[3][3]) {
     // Sum each row
 
     // Sum each column
@@ -59,6 +59,6 @@ int isMagicSquare(int *square) {
     return 1; // Placeholder return
 }
 
-void printSquare(int *square) {
+void printSquare(int square[3][3]) {
     // Print square
 }
