@@ -80,16 +80,26 @@ int diagonalSum(int square[3][3], int diagonal) {
 }
 
 int isMagicSquare(int square[3][3]) {
+    // Get initial sum to check for
+    int sum = rowSum(square, 0);
+
     // Sum each row
+    int rowsEqual = rowSum(square, 0) == sum && rowSum(square, 1) == sum && rowSum(square, 2);
+    if (!rowsEqual)
+        return 0;
 
     // Sum each column
+    int columnsEqual = columnSum(square, 0) == sum && columnSum(square, 1) == sum && columnSum(square, 2);
+    if (!columnsEqual)
+        return 0;
 
     // Sum both diagonals
-
-    // Check that all sums are equal to each other
-
-    // Return result
-    return 1; // Placeholder return
+    int diagonalsEqual = diagonalSum(square, 0) == sum && diagonalSum(square, 1) == sum;
+    if (!diagonalsEqual)
+        return 0;
+    
+    // All rows, columns, and diagonals sum to the same number
+    return 1;
 }
 
 void printSquare(int square[3][3]) {
