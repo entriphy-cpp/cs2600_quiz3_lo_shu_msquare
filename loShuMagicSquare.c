@@ -23,6 +23,8 @@ int main(int argc, char const *argv[]) {
                 }
                 square[idx / 3][idx % 3] = value;
             }
+            printf("Square:\n");
+            printSquare(square);
         } else {
             // User provided arguments, but did not provide the amount of values required
             printf("Not enough arguments provided (need 9 values; got %d).\n", argc - 1);
@@ -30,9 +32,9 @@ int main(int argc, char const *argv[]) {
         }
     } else {
         // If user does not provide any arguments:
-        // - Create matrix that is a magic square
-        // - Create matrix that is not a magic square
-        // - Create a randomized matrix until is a magic square is found
+        // - Create square that is a magic square
+        // - Create square that is not a magic square
+        // - Create a randomized square until is a magic square is found
     }
 
     return EXIT_SUCCESS;
@@ -60,5 +62,7 @@ int isMagicSquare(int square[3][3]) {
 }
 
 void printSquare(int square[3][3]) {
-    // Print square
+    for (int i = 0; i < 3; i++) {
+        printf("[%d %d %d]\n", square[i][0], square[i][1], square[i][2]);
+    }
 }
