@@ -103,12 +103,12 @@ int isMagicSquare(int square[3][3]) {
     int sum = rowSum(square, 0);
 
     // Sum each row
-    int rowsEqual = rowSum(square, 0) == sum && rowSum(square, 1) == sum && rowSum(square, 2);
+    int rowsEqual = rowSum(square, 0) == sum && rowSum(square, 1) == sum && rowSum(square, 2) == sum;
     if (!rowsEqual)
         return 0;
 
     // Sum each column
-    int columnsEqual = columnSum(square, 0) == sum && columnSum(square, 1) == sum && columnSum(square, 2);
+    int columnsEqual = columnSum(square, 0) == sum && columnSum(square, 1) == sum && columnSum(square, 2) == sum;
     if (!columnsEqual)
         return 0;
 
