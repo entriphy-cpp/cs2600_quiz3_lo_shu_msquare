@@ -66,11 +66,11 @@ int main(int argc, char const *argv[]) {
 }
 
 int rowSum(int square[3][3], int row) {
-    return 0; // Placeholder return
+    return square[row][0] + square[row][1] + square[row][2];
 }
 
 int columnSum(int square[3][3], int column) {
-    return 0; // Placeholder return
+    return square[0][column] + square[1][column] + square[2][column];
 }
 
 int isMagicSquare(int square[3][3]) {
