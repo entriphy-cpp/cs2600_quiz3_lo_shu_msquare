@@ -42,6 +42,10 @@ int main(int argc, char const *argv[]) {
             }
             printf("Square:\n");
             printSquare(square);
+            if (!isUniqueSquare(square)) {
+                printf("Square is not unique; exiting...\n");
+                return EXIT_FAILURE;
+            }
         } else {
             // User provided arguments, but did not provide the amount of values required
             printf("Not enough arguments provided (need 9 values; got %d).\n", argc - 1);
@@ -49,8 +53,8 @@ int main(int argc, char const *argv[]) {
         }
     } else {
         // If user does not provide any arguments:
+        printf("Provide 9 square values to test if the square is a Lo Shu Magic Square (all rows, columns, and diagonals add up to the same number).\n");
         printf("Usage: loShuMagicSquare [square]\n");
-        printf("\tProvide 9 square values to test if the square is a Lo Shu Magic Square (all rows, columns, and diagonals add up to the same number).\n");
         printf("Running tests...\n\n");
         int magicSquare;
 
@@ -80,15 +84,17 @@ int main(int argc, char const *argv[]) {
 
         // Create a randomized square until is a magic square is found
         printf("Generating random sqaures...\n");
-        srand(time(NULL));
+        srand(time(NULL)); // Set random number generator seed
         int tries = 0; // Number of tries to find a random magic square
         while (!isMagicSquare(square)) {
-            tries++;
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
-                    square[i][j] = (rand() % 9) + 1; // Generate a number between 1 and 9
+            tries++; // Only count tries when a unique square is generated
+            do {
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 3; j++) {
+                        square[i][j] = (rand() % 9) + 1; // Generate a number between 1 and 9
+                    }
                 }
-            }
+            } while (!isUniqueSquare(square));
         }
         printf("Found magic square after %d tries:\n", tries);
         printSquare(square);
