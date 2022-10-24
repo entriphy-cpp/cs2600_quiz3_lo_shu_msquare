@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 int rowSum(int square[3][3], int row); // Gets the sum of the specified row
 int columnSum(int square[3][3], int column); // Gets the sum of the specified column
@@ -49,7 +50,15 @@ int main(int argc, char const *argv[]) {
         printf("Running tests...\n");
 
         // Create square that is a magic square
+        memcpy(square, MAGIC_SQUARE, sizeof(square));
+        printf("Valid magic square:\n");
+        printSquare(square);
+
         // Create square that is not a magic square
+        memcpy(square, NOT_MAGIC_SQUARE, sizeof(square));
+        printf("Invalid magic square:\n");
+        printSquare(square);
+
         // Create a randomized square until is a magic square is found
     }
 
