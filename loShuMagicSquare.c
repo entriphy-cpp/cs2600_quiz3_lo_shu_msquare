@@ -4,6 +4,7 @@
 
 int rowSum(int square[3][3], int row); // Gets the sum of the specified row
 int columnSum(int square[3][3], int column); // Gets the sum of the specified column
+int diagonalSum(int square[3][3], int diagonal); // Gets the sum of the specified column
 int isMagicSquare(int square[3][3]); // Checks if the square is a magic square
 void printSquare(int square[3][3]); // Formats and prints the square
 
@@ -71,6 +72,11 @@ int rowSum(int square[3][3], int row) {
 
 int columnSum(int square[3][3], int column) {
     return square[0][column] + square[1][column] + square[2][column];
+}
+
+int diagonalSum(int square[3][3], int diagonal) {
+    // 0 = top left to bottom right, 1 = bottom left to top right
+    return diagonal == 0 ? square[0][0] + square[1][1] + square[2][2] : square[2][0] + square[1][1] + square[0][2];
 }
 
 int isMagicSquare(int square[3][3]) {
